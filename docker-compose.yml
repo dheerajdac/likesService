@@ -1,0 +1,26 @@
+version: "3.5"
+
+services:
+  likes-service:
+    build: 
+      context: .
+      dockerfile: docker/Dockerfile
+      args:
+        # On Linux, you may need to update USER_UID and USER_GID below if not your local UID is not 1000.
+        #USER_UID: 1000
+        #USER_GID: 1000
+        TEST: 1000
+    container_name: likes-service 
+    ports:
+      - "9051:9051"
+    environment:
+      - PROFILE=production
+    networks:
+      - likesService
+      - likesRepo
+networks:
+  likesService:
+    name: likesService
+  likesRepo:
+    external:
+      name: likesRepo

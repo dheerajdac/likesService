@@ -1,0 +1,8 @@
+server:
+  port: 9051
+spring:
+  application:
+    name: likesService
+
+repo:
+  uri: "http://likes-repo:9052"
