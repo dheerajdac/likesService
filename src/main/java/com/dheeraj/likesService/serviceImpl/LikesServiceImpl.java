@@ -64,5 +64,15 @@ public class LikesServiceImpl implements LikesService {
         return WebClient.builder()
             .baseUrl(uri);
     }
+
+    @Override
+    public Mono<Long> countByParentId(String parentId) {
+        Mono<Long> rep = getWebClientBuilder().build()
+                                    .get()
+                                    .uri("/like/count/{parentId}", parentId)
+                                    .retrieve()
+                                    .bodyToMono(Long.class);
+        return rep;
+    }
     
 }

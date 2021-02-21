@@ -27,7 +27,7 @@ public class LikesController {
 
     @PostMapping("")
     public Mono<Like> addLike(@RequestBody Like like) {
-        return this.service.addLike(like);        
+        return this.service.addLike(like);
     }
 
     @GetMapping("/{parentId}")
@@ -44,6 +44,11 @@ public class LikesController {
     @ResponseStatus(value = HttpStatus.OK)
     public Mono<LikeResponse> getLikes(@PathVariable String parentId, @RequestBody LikeRequest likeRequest) {
         return this.service.getPageableLikes(parentId, likeRequest);
+    }
+
+    @GetMapping("/count/{parentId}")
+    public Mono<Long> getCountByParentId(@PathVariable String parentId){
+        return this.service.countByParentId(parentId);
     }
     
 }

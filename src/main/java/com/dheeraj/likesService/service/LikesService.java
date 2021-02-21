@@ -17,4 +17,6 @@ public interface LikesService {
 
     public Mono<LikeResponse>  getPageableLikes(String parentId, LikeRequest req);
 
+	public Mono<Long> countByParentId(String parentId);
+
 }
